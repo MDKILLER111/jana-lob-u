@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Alishba ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff5f8a,#ff9aa2);
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
+}
+
+.card{
+  background:rgba(255,255,255,0.22);
+  backdrop-filter:blur(14px);
+  padding:38px;
+  width:90%;
+  max-width:390px;
+  border-radius:28px;
+  text-align:center;
+  color:white;
+  animation:fadeUp 1.4s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.heart{
+  font-size:62px;
+  animation:beat 1.4s infinite;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.45)}
+}
+
+h1{
+  margin:18px 0 10px;
+  font-size:26px;
+}
+
+.name{
+  font-size:18px;
+  margin-bottom:18px;
+  min-height:24px;
+}
+
+p{
+  font-size:15px;
+  line-height:1.75;
+  margin-bottom:28px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+
+button{
+  border:none;
+  padding:13px 24px;
+  border-radius:30px;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#yes{
+  background:white;
+  color:#ff4f81;
+  font-weight:600;
+}
+
+#yes:hover{transform:scale(1.15)}
+
+#no{
+  background:rgba(255,255,255,0.3);
+  color:white;
+  position:relative;
+}
+
+.confetti{
+  position:fixed;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(100vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<div class="card">
+  <div class="heart">❤️</div>
+
+  <h1>Happy Propose Day</h1>
+  <div class="name" id="typing"></div>
+
+  <p>
+    From the moment you entered my life,<br>
+    my world became softer and brighter.<br><br>
+
+    I don’t want a perfect story,<br>
+    I just want **you** in every chapter<br>
+    of my life.
+  </p>
+
+  <div class="buttons">
+    <button id="yes">YES 💍</button>
+    <button id="no">NO 🙈</button>
+  </div>
+</div>
+
+<script>
+// Typing effect
+const text = "Dear Alishba Adil ❤️";
+let i = 0;
+const typing = document.getElementById("typing");
+
+function typeEffect(){
+  if(i < text.length){
+    typing.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 80);
+  }
+}
+typeEffect();
+
+// Music autoplay on interaction
+document.body.addEventListener("click",()=>{
+  document.getElementById("bgm").play();
+},{once:true});
+
+// NO button escape
+const noBtn = document.getElementById("no");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.left = Math.random()*120 - 60 + "px";
+  noBtn.style.top = Math.random()*80 - 40 + "px";
+});
+
+// YES button
+document.getElementById("yes").onclick = ()=>{
+  for(let i=0;i<180;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.top="-10px";
+    c.style.background=`hsl(${Math.random()*360},100%,85%)`;
+    c.style.animationDuration=2.5+Math.random()*2+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+  }
+
+  setTimeout(()=>{
+    alert("Alishba Adil ❤️\nWill you be mine forever?\n\n— Malik Rayan 💍");
+  },800);
+};
+</script>
+
+</body>
+</html>
